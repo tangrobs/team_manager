@@ -1,0 +1,37 @@
+<div>
+  <h4>Add Player</h4>
+  <div *ngIf="validationMessage">
+    <p class = "error" *ngFor="let message of validationMessage">{{message}}</p>
+  </div>
+  <table>
+    <tr>
+      <td>Player Name:</td>
+      <td><input 
+            type = "text" 
+            name = "name"
+            required
+            minlength="2"
+            [(ngModel)]="newplayer.name"
+            #name="ngModel"
+            >
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div *ngIf="name.errors">
+          <p class = "error" *ngIf="name.errors.required">A name is required</p>
+          <p class = "error" *ngIf="name.errors.minlength">A name must be at least 2 characters!</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Preferred Position: </td>
+      <td><input type = "text" name = "position" [(ngModel)]="newplayer.position"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button (click)="add()" [disabled]="!name.valid">ADD</button></td>
+    </tr>
+  </table>
+</div>

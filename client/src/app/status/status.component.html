@@ -1,0 +1,29 @@
+<div>
+  <h2>Player Status - Game {{game}}</h2>
+  <nav>
+    <a routerLink = "/status/game/1"><h4>Game 1</h4></a> |
+    <a routerLink = "/status/game/2"><h4>Game 2</h4></a> |
+    <a routerLink = "/status/game/3"><h4>Game 3</h4></a>
+  </nav>
+  <table class = "table table-striped" *ngIf="players">
+    <tr>
+      <th>Team Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor = "let player of players">
+      <td>{{player.name}}</td>
+      <td>
+        <button 
+        [ngClass] = "{'playing': player.status[game-1] == 'playing'}"
+        (click)="status(player._id,'playing')">Playing</button>
+        <button 
+        [ngClass] = "{'notplaying': player.status[game-1] == 'not playing'}"
+        (click)="status(player._id,'not playing')">Not Playing</button>
+        <button 
+        [ngClass] = "{'undecided': player.status[game-1] == 'undecided'}"
+        (click)="status(player._id,'undecided')">Undecided</button>
+      </td>
+    </tr>
+  </table>
+</div>
+  

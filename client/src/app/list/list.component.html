@@ -1,0 +1,14 @@
+<div *ngIf="players">
+  <table class = "table table-striped">
+    <tr>
+      <th>Team Name</th>
+      <th>Preferred Position</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let player of players">
+      <td>{{player.name}}</td>
+      <td>{{player.position}}</td>
+      <td><button (click)="delete(player)">delete</button></td>
+    </tr>
+  </table>
+</div>
